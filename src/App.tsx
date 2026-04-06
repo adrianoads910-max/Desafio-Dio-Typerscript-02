@@ -1,19 +1,27 @@
-import { ChakraProvider } from "@chakra-ui/react"
-import Header from "./components/Header/Header"
-import { Card } from "./components/Card/Card"
-import "./App.css"
+import React from 'react';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import Header from './components/Header';
+import LoginPage from './pages/LoginPage';
+import ProfilePage from './pages/ProfilePage';
+
+// Componente interno que lê o contexto e decide qual página renderizar
+function AppContent() {
+  const { isAuthenticated } = useAuth();
+
+  return (
+    <>
+      <Header />
+      {isAuthenticated ? <ProfilePage /> : <LoginPage />}
+    </>
+  );
+}
 
 function App() {
   return (
-    <ChakraProvider>
-      <div className="min-h-screen bg-gray-950 flex flex-col">
-        <Header />
-        <div className="flex flex-1 items-center justify-center px-4">
-          <Card />
-        </div>
-      </div>
-    </ChakraProvider>
-  )
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;

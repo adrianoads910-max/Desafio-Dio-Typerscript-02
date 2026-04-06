@@ -1,29 +1,71 @@
-# Desenvolvendo o Dio Bank
-desenvolvido por [Nathally Souza](https://github.com/nathyts)
+# DIO Bank – Desafio TypeScript 02
 
-#### Projeto desenvolvido com React
+Desenvolvido com **React + TypeScript + Tailwind CSS**.
 
-### Tecnologias
-- Typescript
+---
 
-### Como rodar o projeto
+## ✅ Desafios Implementados
 
-1 - Clone o repositório
+### [x] Validação da senha no campo de login
+- Validação de e-mail (formato correto)
+- Validação de senha (mínimo 6 caracteres, 1 maiúscula, 1 número)
+- Testes unitários com TDD em `src/tests/auth.test.ts`
 
-2 - Instale as dependeências
-    
-    npm install
+### [x] Sistema de login com Context API
+- `AuthContext` com estado global de autenticação
+- `localStorage` para persistência da sessão
+- Se o usuário já estiver logado, a tela de login não é exibida
 
-3 - Execute o projeto
+### [x] Página de perfil do usuário
+- Exibe nome e e-mail do usuário logado
+- Rota protegida – redireciona para login se não autenticado
+- Testes unitários em `src/tests/components.test.tsx`
 
-    npm start
+### [x] Deploy no Netlify
+- Configurado via `netlify.toml`
 
-#### Desafios
-[x] Crie os componentes referentes aos elementos na página inicial
-  - Crie um componente para o header, com o título da aplicação
-  - Crie um componente para o botão, que aceite onClick como uma das props do componente
-  - Refatore o componente Card para receber o formulário de login. Ao invés de chamar elemento por elemento na página inicial, apenas o componente Card deve ser chamado.
+---
 
-[x] Crie uma função de Boas vindas
-  - Ao clicar no botão, deve aparecer um alert com uma mensagem de boas vindas
-  - Crie o teste unitário da função
+## 🚀 Como rodar
+
+```bash
+npm install
+npm start
+```
+
+## 🧪 Testes
+
+```bash
+npm test
+```
+
+## 🔑 Credenciais de teste
+
+| Campo | Valor              |
+|-------|--------------------|
+| E-mail | adriano@diobank.com |
+| Senha  | Dio@1234           |
+
+---
+
+## 📁 Estrutura
+
+```
+src/
+├── context/
+│   └── AuthContext.tsx      # Context API de autenticação
+├── components/
+│   ├── Header.tsx
+│   ├── Button.tsx
+│   └── Card.tsx             # Formulário de login
+├── pages/
+│   ├── LoginPage.tsx
+│   └── ProfilePage.tsx      # Página protegida
+├── utils/
+│   └── auth.ts              # Funções puras de validação/autenticação
+├── tests/
+│   ├── auth.test.ts         # Testes TDD das funções utilitárias
+│   └── components.test.tsx  # Testes dos componentes
+└── types/
+    └── index.ts
+```
